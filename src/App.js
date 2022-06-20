@@ -16,7 +16,7 @@ function App() {
   }
   return (
     <div className="App">
-      <h1>Hello World!</h1>
+      <h1>Simple React Todo Organizer📘</h1>
       <form>
         <FormControl>
           <InputLabel>✅ Write a Todo</InputLabel>
