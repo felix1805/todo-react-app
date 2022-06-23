@@ -1,23 +1,24 @@
 import React, { useState } from 'react'
-import { List, ListItem, ListItemAvatar, ListItemText, Modal, Button } from '@mui/material';
+import { List, ListItem, ListItemAvatar, ListItemText, Modal, Button, Typography, Box } from '@mui/material';
 import './Todo.css';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import db from './firebase';
-import { alpha } from '@mui/material/styles';
 
-const useStyles = alpha((theme) => ({
+const style = {
   paper: {
     position: 'absolute',
     width: 400,
-    backgroundColor: theme.palette.background.paper,
+    height: 150,
+    bgcolor: 'background.paper',
     border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    boxShadow: 24,
+    padding: 'spacing(2, 4, 3)',
+    textAlign: 'center',
+
   },
-}));
+};
 
 function Todo(props) {
-  const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState();
 
@@ -36,10 +37,17 @@ function Todo(props) {
         open={open}
         onClose={e => setOpen(false)}
       >
-        <div className={classes.paper}>
-          <h1>Edit Post</h1>
+        <div>
+        <Box sx={style.paper}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Edit Post
+          </Typography>
           <input value={input} onChange={event => setInput(event.target.value)} />
           <Button onClick={updateTodo}>Update Todo</Button>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Edit Post and Update to Server
+          </Typography>
+        </Box>
         </div>
 
       </Modal>
