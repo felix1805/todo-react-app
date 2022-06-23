@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { List, ListItem, ListItemAvatar, ListItemText, Modal, Button, Typography, Box } from '@mui/material';
+import { List, ListItem, ListItemAvatar, ListItemText, Modal, Button, Typography, Box, FormControl, Input, InputLabel  } from '@mui/material';
 import './Todo.css';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import db from './firebase';
@@ -42,11 +42,16 @@ function Todo(props) {
           <Typography id="modal-modal-title" variant="h4" component="h3">
             Edit Post
           </Typography>
-          <input value={input} onChange={event => setInput(event.target.value)} />
-          <Button onClick={updateTodo}  variant="contained" color="secondary">Update Todo</Button>
+          <form>
+            <FormControl>
+              <InputLabel>✅ Update a Todo</InputLabel>
+          <Input value={input} onChange={event => setInput(event.target.value)} />
+          <Button onClick={updateTodo}  variant="contained" color="secondary">Update</Button>
           <Typography id="modal-modal-description" sx={{ mt: 3 }}>
             Edit Post and Update to Server
           </Typography>
+          </FormControl>
+          </form>
         </Box>
         </div>
 
