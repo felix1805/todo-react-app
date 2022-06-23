@@ -21,14 +21,11 @@ function Todo(props) {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState();
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
 
   const updateTodo = () => {
     db.collection('todos').doc(props.todo.id).set({
 
-
+      todo: input
     }, { merge: true });
     setOpen(false);
   }
@@ -42,7 +39,7 @@ function Todo(props) {
         <div className={classes.paper}>
           <h1>Edit Post</h1>
           <input value={input} onChange={event => setInput(event.target.value)} />
-          <Button onClick={e => setOpen(false)}>Update Todo</Button>
+          <Button onClick={updateTodo}>Update Todo</Button>
         </div>
 
       </Modal>
