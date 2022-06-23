@@ -39,12 +39,12 @@ function Todo(props) {
       >
         <div>
         <Box sx={style.paper}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography id="modal-modal-title" variant="h4" component="h3">
             Edit Post
           </Typography>
           <input value={input} onChange={event => setInput(event.target.value)} />
-          <Button onClick={updateTodo}>Update Todo</Button>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Button onClick={updateTodo}  variant="contained" color="secondary">Update Todo</Button>
+          <Typography id="modal-modal-description" sx={{ mt: 3 }}>
             Edit Post and Update to Server
           </Typography>
         </Box>
@@ -55,9 +55,9 @@ function Todo(props) {
         <ListItem>
           <ListItemAvatar>
           </ListItemAvatar>
-          <ListItemText primary={props.todo.todo} secondary="Dummy Deadline ⏰" />
+          <ListItemText primary={props.todo.todo} secondary="Posted To Database" />
         </ListItem>
-        <button onClick={e => setOpen(true)}>EDIT</button>
+        <Button onClick={e => setOpen(true)} variant="contained" color="primary">EDIT</Button>
         <DeleteForeverIcon onClick={event => db.collection('todos').doc(props.todo.id).delete()} />
       </List>
     </>
