@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { List, ListItem, ListItemAvatar, ListItemText, Modal, Button, Typography, Box, FormControl, Input, InputLabel  } from '@mui/material';
+import { List, ListItem, ListItemAvatar, ListItemText, Modal, Button, Typography, Box, FormControl, Input, InputLabel, Fab  } from '@mui/material';
 import './Todo.css';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
+import EditIcon from '@mui/icons-material/Edit';
 import db from './firebase';
 
 const style = {
@@ -62,8 +63,10 @@ function Todo(props) {
           </ListItemAvatar>
           <ListItemText primary={props.todo.todo} secondary="Posted To Database" />
         </ListItem>
-        <Button onClick={e => setOpen(true)} variant="contained" color="primary">EDIT</Button>
-        <DeleteForeverIcon onClick={event => db.collection('todos').doc(props.todo.id).delete()} />
+        <Fab size="small" onClick={e => setOpen(true)}color="secondary" aria-label="edit">
+        <EditIcon />
+      </Fab>
+        <DeleteForeverTwoToneIcon fontSize="large" onClick={event => db.collection('todos').doc(props.todo.id).delete()} />
       </List>
     </>
   )
